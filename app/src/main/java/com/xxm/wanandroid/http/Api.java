@@ -8,7 +8,7 @@ public class Api {
     public final static String HOME_BANNER = "https://www.wanandroid.com/banner/json";
 
     public final static String HOME_ARTICLE_LIST = "https://www.wanandroid.com/article/list/";
-    /// 知识体系
+    // 知识体系
     public final static String SYSTEM_TREE = "https://www.wanandroid.com/tree/json";
     // 知识体系详情
     public final static String SYSTEM_TREE_CONTENT = "https://www.wanandroid.com/article/list/";
