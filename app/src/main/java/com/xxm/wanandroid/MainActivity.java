@@ -15,7 +15,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.xxm.wanandroid.base.BaseFragment;
+import com.xxm.wanandroid.ui.drawer.AboutFragment;
+import com.xxm.wanandroid.ui.drawer.CollectionFragment;
 import com.xxm.wanandroid.ui.home.HomeFragment;
+import com.xxm.wanandroid.ui.drawer.WebsiteFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,21 +84,22 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        BaseFragment fragment = null;
         if (id == R.id.nav_mine_collection) {
-            // Handle the camera action
+            fragment = CollectionFragment.newInstance("","");
         } else if (id == R.id.nav_common_website) {
-
+            fragment = WebsiteFragment.newInstance("","");
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_about) {
-
+            fragment = AboutFragment.newInstance("","");
         } else if (id == R.id.nav_sign_out) {
 
         }
-
+        if (fragment != null)
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, fragment).commit();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

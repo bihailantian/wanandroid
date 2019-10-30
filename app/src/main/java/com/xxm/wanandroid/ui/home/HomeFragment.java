@@ -13,13 +13,14 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.xxm.wanandroid.R;
+import com.xxm.wanandroid.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
 
     public HomeFragment() {
