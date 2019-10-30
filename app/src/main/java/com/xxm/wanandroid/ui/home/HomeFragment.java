@@ -79,11 +79,13 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, null);
         BottomNavigationView navView = view.findViewById(R.id.nav_view);
         mTextMessage = view.findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        //解决 BottomNavigationView 大于3个menu文字不显示 问题 关于item>3会有位移，这个在api28已经解决，
+        // 在ButtomNavigationView添加app:labelVisibilityMode="labeled"就可以解决
+        //navView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
         return view;
     }
