@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginStart="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/ic_arrow_upward_black_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
