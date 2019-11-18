@@ -1,9 +1,12 @@
 package com.xxm.wanandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,9 +23,12 @@ import com.xxm.wanandroid.ui.drawer.AboutFragment;
 import com.xxm.wanandroid.ui.drawer.CollectionFragment;
 import com.xxm.wanandroid.ui.home.HomeFragment;
 import com.xxm.wanandroid.ui.drawer.WebsiteFragment;
+import com.xxm.wanandroid.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private TextView tvUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,11 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        tvUser = headerView.findViewById(R.id.tv_user);
+        tvUser.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        });
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, HomeFragment.newInstance()).commit();
 
@@ -86,15 +97,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         BaseFragment fragment = null;
         if (id == R.id.nav_mine_collection) {
-            fragment = CollectionFragment.newInstance("","");
+            fragment = CollectionFragment.newInstance("", "");
         } else if (id == R.id.nav_common_website) {
-            fragment = WebsiteFragment.newInstance("","");
+            fragment = WebsiteFragment.newInstance("", "");
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_about) {
-            fragment = AboutFragment.newInstance("","");
+            fragment = AboutFragment.newInstance("", "");
         } else if (id == R.id.nav_sign_out) {
 
         }
