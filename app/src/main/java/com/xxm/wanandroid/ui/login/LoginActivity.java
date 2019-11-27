@@ -1,69 +1,141 @@
 package com.xxm.wanandroid.ui.login;
 
-import android.animation.ObjectAnimator;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.flyco.tablayout.SlidingTabLayout;
 import com.xxm.wanandroid.R;
+import com.xxm.wanandroid.base.BaseActivity;
+import com.xxm.wanandroid.utils.ViewPagerScroller;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+public class LoginActivity extends BaseActivity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
-    private TextView tvLogin;
-    private TextView tvRegistered;
-    private ImageView ivBg;
-    private ViewPager viewPager;
+    private ActionBar actionBar;
+    private final String[] mTitles = {"登录", "注册"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        tvLogin = findViewById(R.id.tv_login);
-        tvRegistered = findViewById(R.id.tv_registered);
-        ivBg = findViewById(R.id.iv_bg);
-        viewPager = findViewById(R.id.vp_pager);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(R.string.login);
+        }
 
-        tvLogin.setOnClickListener(this);
-        tvRegistered.setOnClickListener(this);
+        ViewPager viewPager = findViewById(R.id.vp_pager);
 
+        // indicator圆角色块
+        SlidingTabLayout tabLayout_9 = findViewById(R.id.tl_9);
+
+        View pageLogin = LayoutInflater.from(mActivity).inflate(R.layout.page_login, null);
+        View pageRegister = LayoutInflater.from(mActivity).inflate(R.layout.page_register, null);
+
+        List<View> pageList = new ArrayList<>();
+        pageList.add(pageLogin);
+        pageList.add(pageRegister);
+        viewPager.setAdapter(new MyPagerAdapter(pageList, mTitles));
+        tabLayout_9.setViewPager(viewPager);
+
+
+        //自定义ViewPager的滚动时间
+        try {
+            Field field = ViewPager.class.getDeclaredField("mScroller");
+            field.setAccessible(true);
+            ViewPagerScroller scroller = new ViewPagerScroller(mActivity, new LinearInterpolator());
+            field.set(viewPager, scroller);
+            scroller.setmDuration(300);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    actionBar.setTitle(R.string.login);
+                } else if (position == 1) {
+                    actionBar.setTitle(R.string.registered);
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
+
     @Override
-    public void onClick(View v) {
-        ObjectAnimator translationX;
-        int offerX = 0;
-        switch (v.getId()) {
-            case R.id.tv_login:
-                offerX = tvRegistered.getWidth();
-                ObjectAnimator oa = ObjectAnimator.ofFloat(ivBg, "translationX", offerX, 0);
-                oa.setInterpolator(new DecelerateInterpolator());
-                oa.setDuration(500);
-                oa.start();
-
-                tvRegistered.setTextColor(Color.WHITE);
-                tvLogin.setTextColor(Color.BLACK);
-                break;
-
-            case R.id.tv_registered:
-                offerX = tvLogin.getWidth();
-                translationX = ObjectAnimator.ofFloat(ivBg, "translationX", 0f, offerX);
-                translationX.setInterpolator(new DecelerateInterpolator());
-                translationX.setDuration(500).start();
-
-                tvRegistered.setTextColor(Color.BLACK);
-                tvLogin.setTextColor(Color.WHITE);
-                break;
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) { //点击返回图标事件
+            finish();
         }
-        Log.e(TAG, "offerX=" + offerX);
+        return super.onOptionsItemSelected(item);
+    }
+
+    class MyPagerAdapter extends PagerAdapter {
+
+        private List<View> pageList;
+        private String[] mTitles;
+
+        public MyPagerAdapter(List<View> pageList, String[] mTitles) {
+            this.pageList = pageList;
+            this.mTitles = mTitles;
+        }
+
+        @Override
+        public int getCount() {
+            return pageList.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return view == object;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            View contentView = pageList.get(position);
+            container.addView(contentView);
+            return contentView;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView((View) object);
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
+        }
     }
 }
