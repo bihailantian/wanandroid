@@ -2,9 +2,9 @@ package com.xxm.wanandroid.model;
 
 import java.util.List;
 
-public class HotwordModel extends BaseModel{
+public class HotwordModel extends BaseModel {
 
-   private List<DataListBean> data;
+    private List<DataListBean> data;
 
     public List<DataListBean> getData() {
         return data;

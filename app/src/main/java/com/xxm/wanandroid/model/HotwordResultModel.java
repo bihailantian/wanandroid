@@ -2,7 +2,7 @@ package com.xxm.wanandroid.model;
 
 import java.util.List;
 
-public class HotwordResultModel extends BaseModel{
+public class HotwordResultModel extends BaseModel {
     private DataBean data;
 
     public DataBean getData() {
@@ -14,13 +14,13 @@ public class HotwordResultModel extends BaseModel{
     }
 
     class DataBean {
-       private boolean over;
-       private int curPage;
-       private int offset;
-       private int pageCount;
-       private int size;
-       private int total;
-       private List<DatasListBean> datas;
+        private boolean over;
+        private int curPage;
+        private int offset;
+        private int pageCount;
+        private int size;
+        private int total;
+        private List<DatasListBean> datas;
 
         public boolean isOver() {
             return over;
@@ -80,29 +80,29 @@ public class HotwordResultModel extends BaseModel{
     }
 
     class DatasListBean {
-       private String apkLink;
-       private String author;
-       private String chapterName;
-       private String desc;
-       private String envelopePic;
-       private String link;
-       private String niceDate;
-       private String origin;
-       private String projectLink;
-       private String superChapterName;
-       private String title;
-       private boolean collect;
-       private boolean fresh;
-       private int chapterId;
-       private int courseId;
-       private int id;
-       private int publishTime;
-       private int superChapterId;
-       private int type;
-       private int userId;
-       private int visible;
-       private int zan;
-       private List<TagsListBean> tags;
+        private String apkLink;
+        private String author;
+        private String chapterName;
+        private String desc;
+        private String envelopePic;
+        private String link;
+        private String niceDate;
+        private String origin;
+        private String projectLink;
+        private String superChapterName;
+        private String title;
+        private boolean collect;
+        private boolean fresh;
+        private int chapterId;
+        private int courseId;
+        private int id;
+        private int publishTime;
+        private int superChapterId;
+        private int type;
+        private int userId;
+        private int visible;
+        private int zan;
+        private List<TagsListBean> tags;
 
         public String getApkLink() {
             return apkLink;
@@ -290,8 +290,8 @@ public class HotwordResultModel extends BaseModel{
     }
 
     class TagsListBean {
-       private String name;
-       private String url;
+        private String name;
+        private String url;
 
         public String getName() {
             return name;

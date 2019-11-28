@@ -15,12 +15,12 @@ public class CommonWebsitModel extends BaseModel {
     }
 
     class DataListBean {
-       private String icon;
-       private String link;
-       private String name;
-       private int id;
-       private int order;
-       private int visible;
+        private String icon;
+        private String link;
+        private String name;
+        private int id;
+        private int order;
+        private int visible;
 
         public String getIcon() {
             return icon;

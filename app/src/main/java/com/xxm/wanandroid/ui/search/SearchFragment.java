@@ -2,12 +2,11 @@ package com.xxm.wanandroid.ui.search;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.xxm.wanandroid.R;
 import com.xxm.wanandroid.base.BaseFragment;

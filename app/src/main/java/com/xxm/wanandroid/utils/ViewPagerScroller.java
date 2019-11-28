@@ -1,7 +1,6 @@
 package com.xxm.wanandroid.utils;
 
 import android.content.Context;
-
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 

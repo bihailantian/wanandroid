@@ -21,8 +21,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.xxm.wanandroid.base.BaseFragment;
 import com.xxm.wanandroid.ui.drawer.AboutFragment;
 import com.xxm.wanandroid.ui.drawer.CollectionFragment;
-import com.xxm.wanandroid.ui.home.HomeFragment;
 import com.xxm.wanandroid.ui.drawer.WebsiteFragment;
+import com.xxm.wanandroid.ui.home.HomeFragment;
 import com.xxm.wanandroid.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity

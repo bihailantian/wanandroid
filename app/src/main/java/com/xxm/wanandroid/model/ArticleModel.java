@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 文章
  */
-public class ArticleModel extends BaseModel{
+public class ArticleModel extends BaseModel {
 
     private Data data;
 
@@ -18,13 +18,13 @@ public class ArticleModel extends BaseModel{
     }
 
     class Data {
-       private int curPage;
-       private int offset;
-       private int pageCount;
-       private int size;
-       private int total;
-       private boolean over;
-       private List<Article> datas;
+        private int curPage;
+        private int offset;
+        private int pageCount;
+        private int size;
+        private int total;
+        private boolean over;
+        private List<Article> datas;
 
         public int getCurPage() {
             return curPage;
@@ -84,29 +84,29 @@ public class ArticleModel extends BaseModel{
     }
 
     class Article {
-       private int chapterId;
-       private int courseId;
-       private int id;
-       private int publishTime;
-       private int superChapterId;
-       private int type;
-       private int userId;
-       private int visible;
-       private int zan;
-       private boolean collect;
-       private boolean fresh;
-       private String apkLink;
-       private String author;
-       private String chapterName;
-       private String desc;
-       private String envelopePic;
-       private String link;
-       private String niceDate;
-       private String origin;
-       private String projectLink;
-       private String superChapterName;
-       private String title;
-       private List<Tag> tags;
+        private int chapterId;
+        private int courseId;
+        private int id;
+        private int publishTime;
+        private int superChapterId;
+        private int type;
+        private int userId;
+        private int visible;
+        private int zan;
+        private boolean collect;
+        private boolean fresh;
+        private String apkLink;
+        private String author;
+        private String chapterName;
+        private String desc;
+        private String envelopePic;
+        private String link;
+        private String niceDate;
+        private String origin;
+        private String projectLink;
+        private String superChapterName;
+        private String title;
+        private List<Tag> tags;
 
         public int getChapterId() {
             return chapterId;
@@ -294,8 +294,8 @@ public class ArticleModel extends BaseModel{
     }
 
     class Tag {
-       private String name;
-       private String url;
+        private String name;
+        private String url;
 
         public String getName() {
             return name;
