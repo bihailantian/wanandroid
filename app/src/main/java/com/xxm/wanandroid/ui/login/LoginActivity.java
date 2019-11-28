@@ -4,13 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -50,7 +47,7 @@ public class LoginActivity extends BaseActivity {
         List<View> pageList = new ArrayList<>();
         pageList.add(pageLogin);
         pageList.add(pageRegister);
-        viewPager.setAdapter(new MyPagerAdapter(pageList, mTitles));
+        viewPager.setAdapter(new LoginPagerAdapter(pageList, mTitles));
         tabLayout_9.setViewPager(viewPager);
 
 
@@ -99,43 +96,4 @@ public class LoginActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class MyPagerAdapter extends PagerAdapter {
-
-        private List<View> pageList;
-        private String[] mTitles;
-
-        public MyPagerAdapter(List<View> pageList, String[] mTitles) {
-            this.pageList = pageList;
-            this.mTitles = mTitles;
-        }
-
-        @Override
-        public int getCount() {
-            return pageList.size();
-        }
-
-        @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-            return view == object;
-        }
-
-        @NonNull
-        @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            View contentView = pageList.get(position);
-            container.addView(contentView);
-            return contentView;
-        }
-
-        @Override
-        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView((View) object);
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-        }
-    }
 }
