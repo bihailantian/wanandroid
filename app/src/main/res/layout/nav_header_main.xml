@@ -10,7 +10,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/civ_user"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_centerVertical="true"

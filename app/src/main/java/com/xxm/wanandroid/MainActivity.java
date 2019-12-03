@@ -25,6 +25,8 @@ import com.xxm.wanandroid.ui.drawer.WebsiteFragment;
 import com.xxm.wanandroid.ui.home.HomeFragment;
 import com.xxm.wanandroid.ui.login.LoginActivity;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,12 +52,21 @@ public class MainActivity extends AppCompatActivity
 
         View headerView = navigationView.getHeaderView(0);
         tvUser = headerView.findViewById(R.id.tv_user);
+        CircleImageView civUser = headerView.findViewById(R.id.civ_user);
         tvUser.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            toLogin();
         });
+        civUser.setOnClickListener(v -> {
+            toLogin();
+        });
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, HomeFragment.newInstance()).commit();
 
+    }
+
+    private void toLogin() {
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
     @Override
