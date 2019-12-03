@@ -17,13 +17,13 @@ import com.xxm.wanandroid.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * Use the {@link MainContainerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends BaseFragment {
+public class MainContainerFragment extends BaseFragment {
 
 
-    public HomeFragment() {
+    public MainContainerFragment() {
         // Required empty public constructor
     }
 
@@ -31,10 +31,10 @@ public class HomeFragment extends BaseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment HomeFragment.
+     * @return A new instance of fragment MainContainerFragment.
      */
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static MainContainerFragment newInstance() {
+        return new MainContainerFragment();
     }
 
 
@@ -80,7 +80,7 @@ public class HomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_home, null);
+        View view = inflater.inflate(R.layout.fragment_main_container, null);
         BottomNavigationView navView = view.findViewById(R.id.nav_view);
         mTextMessage = view.findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

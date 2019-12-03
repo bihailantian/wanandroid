@@ -22,7 +22,7 @@ import com.xxm.wanandroid.base.BaseFragment;
 import com.xxm.wanandroid.ui.drawer.AboutFragment;
 import com.xxm.wanandroid.ui.drawer.CollectionFragment;
 import com.xxm.wanandroid.ui.drawer.WebsiteFragment;
-import com.xxm.wanandroid.ui.home.HomeFragment;
+import com.xxm.wanandroid.ui.home.MainContainerFragment;
 import com.xxm.wanandroid.ui.login.LoginActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, HomeFragment.newInstance()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, MainContainerFragment.newInstance()).commit();
 
     }
 
