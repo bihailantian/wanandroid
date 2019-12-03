@@ -6,16 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.xxm.wanandroid.R;
+import com.xxm.wanandroid.base.BaseFragment;
 
 /**
+ * 体系
  * A simple {@link Fragment} subclass.
  * Use the {@link SystemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SystemFragment extends Fragment {
+public class SystemFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,8 +61,7 @@ public class SystemFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected View onInflaterContent(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_system, container, false);
     }
