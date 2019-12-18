@@ -47,8 +47,9 @@ public enum DartHashCode {
 //            }  
 //        }  
 //        return null;  
-//    }  
-    // get set 方法  
+//    }
+
+
     public String getName() {
         return name;
     }
