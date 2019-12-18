@@ -39,5 +39,10 @@
 
     <string name="username">用户名</string>
     <string name="password">密码</string>
-
+    <!--loadingView-->
+    <string name="str_none" />
+    <string name="loading">Loading…</string>
+    <string name="load_failed">Load failed. click to retry!</string>
+    <string name="load_failed_no_network">Oops, network is lost!  click to retry</string>
+    <string name="empty">Empty!</string>
 </resources>

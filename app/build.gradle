@@ -49,4 +49,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation "co.lujun:androidtagview:1.1.7"
     implementation 'com.belerweb:pinyin4j:2.5.1'
+    implementation 'com.billy.android:gloading:1.1.0'
 }
