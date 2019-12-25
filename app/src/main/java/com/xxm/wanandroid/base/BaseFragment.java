@@ -24,13 +24,7 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void initLoadingStatusViewIfNeed() {
         if (mHolder == null) {
-            //bind status view to activity root view by default
-            mHolder = Gloading.getDefault().wrap(mActivity).withRetry(new Runnable() {
-                @Override
-                public void run() {
-                    onLoadRetry();
-                }
-            });
+            mHolder = Gloading.getDefault().cover(mContainer).withRetry(this::onLoadRetry);
         }
     }
 
