@@ -3,6 +3,7 @@ package com.xxm.wanandroid;
 import android.app.Application;
 
 import com.billy.android.loading.Gloading;
+import com.xxm.wanandroid.http.http.NetWorkManager;
 import com.xxm.wanandroid.loading.GlobalAdapter;
 
 public class MyApplication extends Application {
@@ -13,5 +14,7 @@ public class MyApplication extends Application {
 
         Gloading.debug(BuildConfig.DEBUG);
         Gloading.initDefault(new GlobalAdapter());
+
+        NetWorkManager.getInstance().init();
     }
 }

@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xxm.wanandroid.R;
 import com.xxm.wanandroid.base.BaseFragment;
-import com.xxm.wanandroid.http.APIService;
+import com.xxm.wanandroid.http.http.NetWorkManager;
+import com.xxm.wanandroid.http.http.Request;
 import com.xxm.wanandroid.model.SystemTreeData;
 import com.xxm.wanandroid.model.SystemTreeModel;
 import com.xxm.wanandroid.ui.home.adapter.SystemAdapter;
@@ -28,9 +29,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -105,17 +103,13 @@ public class SystemFragment extends BaseFragment {
         mAdapter = new SystemAdapter(mActivity, mData);
         mRecyclerView.setAdapter(mAdapter);
 
-        loadData("https://www.wanandroid.com/");
+        loadData();
     }
 
-    private void loadData(String url) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+    private void loadData() {
+        showLoading();
+        Request request = NetWorkManager.getRequest();
 
-        APIService request = retrofit.create(APIService.class);
         // 2. 采用Observable<...>形式对网络请求进行封装
         Observable<SystemTreeModel> observable = request.systemTree();
 
@@ -148,12 +142,14 @@ public class SystemFragment extends BaseFragment {
                     @Override
                     public void onComplete() {
                         Log.d(TAG, "请求成功");
+                        showLoadSuccess();
                     }
 
                     // 发送请求失败后调用该复写方法
                     @Override
                     public void onError(Throwable e) {
                         Log.d(TAG, "请求失败");
+                        showLoadFailed();
                     }
                 });
     }
