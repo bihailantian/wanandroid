@@ -17,7 +17,7 @@ public class ArticleModel extends BaseModel {
         this.data = data;
     }
 
-    class Data {
+    public class Data {
         private int curPage;
         private int offset;
         private int pageCount;
@@ -81,13 +81,26 @@ public class ArticleModel extends BaseModel {
         public void setDatas(List<Article> datas) {
             this.datas = datas;
         }
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "curPage=" + curPage +
+                    ", offset=" + offset +
+                    ", pageCount=" + pageCount +
+                    ", size=" + size +
+                    ", total=" + total +
+                    ", over=" + over +
+                    ", datas=" + datas +
+                    '}';
+        }
     }
 
-    class Article {
+    public class Article {
         private int chapterId;
         private int courseId;
         private int id;
-        private int publishTime;
+        private long publishTime;
         private int superChapterId;
         private int type;
         private int userId;
@@ -132,11 +145,11 @@ public class ArticleModel extends BaseModel {
             this.id = id;
         }
 
-        public int getPublishTime() {
+        public long getPublishTime() {
             return publishTime;
         }
 
-        public void setPublishTime(int publishTime) {
+        public void setPublishTime(long publishTime) {
             this.publishTime = publishTime;
         }
 
@@ -291,6 +304,35 @@ public class ArticleModel extends BaseModel {
         public void setTags(List<Tag> tags) {
             this.tags = tags;
         }
+
+        @Override
+        public String toString() {
+            return "Article{" +
+                    "chapterId=" + chapterId +
+                    ", courseId=" + courseId +
+                    ", id=" + id +
+                    ", publishTime=" + publishTime +
+                    ", superChapterId=" + superChapterId +
+                    ", type=" + type +
+                    ", userId=" + userId +
+                    ", visible=" + visible +
+                    ", zan=" + zan +
+                    ", collect=" + collect +
+                    ", fresh=" + fresh +
+                    ", apkLink='" + apkLink + '\'' +
+                    ", author='" + author + '\'' +
+                    ", chapterName='" + chapterName + '\'' +
+                    ", desc='" + desc + '\'' +
+                    ", envelopePic='" + envelopePic + '\'' +
+                    ", link='" + link + '\'' +
+                    ", niceDate='" + niceDate + '\'' +
+                    ", origin='" + origin + '\'' +
+                    ", projectLink='" + projectLink + '\'' +
+                    ", superChapterName='" + superChapterName + '\'' +
+                    ", title='" + title + '\'' +
+                    ", tags=" + tags +
+                    '}';
+        }
     }
 
     class Tag {
@@ -312,5 +354,21 @@ public class ArticleModel extends BaseModel {
         public void setUrl(String url) {
             this.url = url;
         }
+
+        @Override
+        public String toString() {
+            return "Tag{" +
+                    "name='" + name + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return "ArticleModel{" +
+                "data=" + data +
+                '}';
     }
 }
