@@ -7,7 +7,7 @@
     <color name="colorWhite">@android:color/white</color>
     <color name="colorBlack">@android:color/black</color>
 
-    <color name="color_loading_status">#FFCCCCCC</color>
+    <color name="color_loading_status">#9E9E9E</color>
     <color name="main_bg">#FF2D84C2</color>
 
 </resources>

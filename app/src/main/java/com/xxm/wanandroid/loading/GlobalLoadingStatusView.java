@@ -29,6 +29,7 @@ public class GlobalLoadingStatusView extends LinearLayout implements View.OnClic
     private final TextView mTextView;
     private final Runnable mRetryTask;
     private final ImageView mImageView;
+    private final TextView mBtnReload;
 
     public GlobalLoadingStatusView(Context context, Runnable retryTask) {
         super(context);
@@ -37,6 +38,7 @@ public class GlobalLoadingStatusView extends LinearLayout implements View.OnClic
         LayoutInflater.from(context).inflate(R.layout.view_global_loading_status, this, true);
         mImageView = findViewById(R.id.image);
         mTextView = findViewById(R.id.text);
+        mBtnReload = findViewById(R.id.tv_reload);
         this.mRetryTask = retryTask;
         setBackgroundColor(0xFFF0F0F0);
     }
@@ -47,6 +49,7 @@ public class GlobalLoadingStatusView extends LinearLayout implements View.OnClic
 
     public void setStatus(int status) {
         boolean show = true;
+        int showReloadBtn = View.GONE;
         OnClickListener onClickListener = null;
         int image = R.drawable.loading;
         int str = R.string.str_none;
@@ -63,8 +66,9 @@ public class GlobalLoadingStatusView extends LinearLayout implements View.OnClic
                 Boolean networkConn = isNetworkConnected(getContext());
                 if (networkConn != null && !networkConn) {
                     str = R.string.load_failed_no_network;
-                    image = R.drawable.icon_no_wifi;
+                    image = R.mipmap.ic_error;
                 }
+                showReloadBtn = View.VISIBLE;
                 onClickListener = this;
                 break;
             case STATUS_EMPTY_DATA:
@@ -74,9 +78,11 @@ public class GlobalLoadingStatusView extends LinearLayout implements View.OnClic
             default:
                 break;
         }
+        //
         mImageView.setImageResource(image);
-        setOnClickListener(onClickListener);
+        mBtnReload.setOnClickListener(onClickListener);
         mTextView.setText(str);
+        mBtnReload.setVisibility(showReloadBtn);
         setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
