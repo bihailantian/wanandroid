@@ -54,7 +54,7 @@ public class MainContainerFragment extends BaseFragment {
                     switchFragment(HomeFragment.newInstance());
                     return true;
                 case R.id.navigation_system:
-                    switchFragment(SystemFragment.newInstance("", ""));
+                    switchFragment(SystemFragment.newInstance());
                     return true;
                 case R.id.navigation_public:
                     switchFragment(PublicFragment.newInstance());
