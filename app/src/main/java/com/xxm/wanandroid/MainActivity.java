@@ -29,17 +29,19 @@ import com.xxm.wanandroid.ui.login.LoginActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainContainerFragment.OnFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView tvUser;
+    private Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
+        setTitleText(R.string.wan_android);
         FrameLayout flContent = findViewById(R.id.fl_content);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -56,12 +58,8 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         tvUser = headerView.findViewById(R.id.tv_user);
         CircleImageView civUser = headerView.findViewById(R.id.civ_user);
-        tvUser.setOnClickListener(v -> {
-            toLogin();
-        });
-        civUser.setOnClickListener(v -> {
-            toLogin();
-        });
+        tvUser.setOnClickListener(v -> toLogin());
+        civUser.setOnClickListener(v -> toLogin());
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, MainContainerFragment.newInstance()).commit();
@@ -98,7 +96,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
-            Log.d(TAG,"点击了搜索图标");
+            Log.d(TAG, "点击了搜索图标");
             return true;
         }
 
@@ -129,5 +127,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void setTitleText(String title) {
+        toolbar.setTitle(title);
+    }
+
+    @Override
+    public void setTitleText(int resId) {
+        toolbar.setTitle(resId);
     }
 }

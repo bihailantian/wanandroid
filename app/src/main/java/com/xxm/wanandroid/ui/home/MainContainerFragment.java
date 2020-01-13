@@ -1,6 +1,7 @@
 package com.xxm.wanandroid.ui.home;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,6 +30,7 @@ public class MainContainerFragment extends BaseFragment {
     private static final String TAG = MainContainerFragment.class.getSimpleName();
 
     private BaseFragment currentFragment;
+    private OnFragmentInteractionListener mListener;
 
     public MainContainerFragment() {
         // Required empty public constructor
@@ -51,20 +54,25 @@ public class MainContainerFragment extends BaseFragment {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    setTitleText(R.string.wan_android);
                     switchFragment(HomeFragment.newInstance());
                     return true;
                 case R.id.navigation_system:
+                    setTitleText(R.string.title_system);
                     switchFragment(SystemFragment.newInstance());
                     return true;
                 case R.id.navigation_public:
+                    setTitleText(R.string.title_public);
                     switchFragment(PublicFragment.newInstance());
                     return true;
 
                 case R.id.navigation_navigation:
+                    setTitleText(R.string.title_navigation);
                     switchFragment(NavigationFragment.newInstance());
                     return true;
 
                 case R.id.navigation_project:
+                    setTitleText(R.string.title_project);
                     switchFragment(ProjectFragment.newInstance());
                     return true;
             }
@@ -76,7 +84,9 @@ public class MainContainerFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitleText(R.string.wan_android);
         switchFragment(HomeFragment.newInstance());
+
     }
 
     @Override
@@ -116,4 +126,31 @@ public class MainContainerFragment extends BaseFragment {
         transaction.commit();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    private void setTitleText(@StringRes int resId) {
+        if (mListener != null)
+            mListener.setTitleText(resId);
+    }
+
+    public interface OnFragmentInteractionListener {
+        void setTitleText(String title);
+
+        void setTitleText(@StringRes int resId);
+    }
 }
