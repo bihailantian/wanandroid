@@ -18,4 +18,10 @@ public interface Request {
     @GET("article/list/{pageNum}/json")
     Observable<ArticleModel> homeTree(@Path("pageNum") int pageNum);
 
+    /**
+     * 公众号标题
+     */
+    @GET("wxarticle/chapters/json")
+    Observable<SystemTreeModel> wxList();
+
 }

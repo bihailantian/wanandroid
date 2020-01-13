@@ -53,7 +53,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +65,12 @@ public abstract class BaseFragment extends Fragment {
             mContainer = onInflaterContent(inflater, container, savedInstanceState);
         }
         return mContainer;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initData(savedInstanceState);
     }
 
 
@@ -99,4 +104,9 @@ public abstract class BaseFragment extends Fragment {
      * @return Return the View for the fragment's UI
      */
     protected abstract View onInflaterContent(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
+    protected void initData(Bundle savedInstanceState) {
+    }
+
+    ;
 }
